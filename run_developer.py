@@ -11,9 +11,14 @@ def main():
     with (directory / "artifacts" / "plan.json").open("r", encoding="utf-8") as file:
         plan = json.load(file)
     source = run_developer(plan)
-    output = directory / "navigation_logic.py"
-    output.write_text(source.rstrip() + "\n", encoding="utf-8")
-    print(f"Navigation code saved to {output}")
+    for output in (
+        directory / "generated" / "navigation_logic.py",
+        directory / "artifacts" / "navigation_logic.py",
+        directory / "navigation_logic.py",
+    ):
+        output.parent.mkdir(parents=True, exist_ok=True)
+        output.write_text(source.rstrip() + "\n", encoding="utf-8")
+        print(f"Navigation code saved to {output}")
 
 
 if __name__ == "__main__":
