@@ -1,0 +1,22 @@
+{
+  "strategy": "Prioritize moving forward toward the goal if possible, otherwise choose the first safe direction (LEFT, RIGHT) to avoid obstacles and ensure progress. Stop only when all directions are blocked.",
+  "decisions": [
+    {
+      "condition": "Goal is in front and path is clear",
+      "action": "FORWARD"
+    },
+    {
+      "condition": "Goal is to the left and path is clear",
+      "action": "LEFT"
+    },
+    {
+      "condition": "Goal is to the right and path is clear",
+      "action": "RIGHT"
+    },
+    {
+      "condition": "All directions are blocked",
+      "action": "STOP"
+    }
+  ],
+  "stop_condition": "Stop when the robot is completely surrounded by obstacles on all sides (front, left, and right)."
+}
